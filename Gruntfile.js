@@ -5,7 +5,8 @@ module.exports = function(grunt) {
     sass: {
       dist: {
         files: {
-          'css/little-topbar.css': 'scss/main.scss'
+          'css/little-topbar.css': 'scss/main.scss',
+          'css/page.css': 'scss/page.scss'
         }
       }
     },
@@ -40,4 +41,4 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', ['sass', 'coffee']);
   grunt.registerTask('default', ['build','watch']);
-}
+};

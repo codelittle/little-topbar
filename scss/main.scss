@@ -1,2 +1,200 @@
 // Little Topbar
 // A tiny responsive navigation library
+
+// Configuration Variables
+$topbar-height: 50px;
+$topbar-width: 100%;
+$topbar-bg-color: #fff;
+$topbar-bg: $topbar-bg-color;
+$topbar-effect-speed: 300ms;
+
+// Topbar logo settings
+$topbar-logo-height: 50px;
+$topbar-logo-width: 220px;
+$topbar-logo-padding-right: 40px;
+$topbar-logo-image-standard: url(../img/little_topbar_logo_1x.png);
+
+// Topbar anchors settings
+$topbar-anchor-font-family: sans-serif;
+$topbar-anchor-font-size: 14px;
+$topbar-anchor-font-weight: normal;
+$topbar-anchor-font-color: #333;
+$topbar-anchor-hover-font-color: #000;
+$topbar-anchor-hover-bg-color: darken($topbar-bg-color, 5%);
+$topbar-anchor-padding-horizontal: 20px;
+$topbar-dropdown-caret-size: 5px; // 4px - 10px, don't go crazy here
+$topbar-dropdown-anchor-font-size: $topbar-anchor-font-size;
+$topbar-dropdown-anchor-padding-horizontal: 20px;
+$topbar-dropdown-anchor-padding-vertical: 10px;
+
+// Reset
+nav.little-topbar,
+nav.little-topbar * {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	list-style: none;
+}
+
+nav.little-topbar {
+	width: $topbar-width;
+
+	div.logo {
+		float: left;
+		height: $topbar-height;
+		width: $topbar-logo-width + $topbar-logo-padding-right;
+
+		h1 a,
+		h1 a:visited {
+			height: $topbar-height;
+			line-height: $topbar-height;
+			text-decoration: none;
+			font-weight: bold;
+			padding: 0;
+
+			// Logo Image
+			background-image: $topbar-logo-image-standard;
+			background-position: left center;
+			background-repeat: no-repeat;
+			background-size: $topbar-logo-width $topbar-logo-height;
+
+			// Image Replacement
+			text-indent: 120%;
+			display: block;
+			overflow: hidden;
+		}
+	}
+
+	// Topbar Defaults
+	ul {
+		position: relative;
+		display: block;
+		float: left;
+		height: $topbar-height;
+		width: auto;
+		background: $topbar-bg;
+
+		// Show / Hide Elements
+		> li.expand,
+		> li.collapse {
+			display: none;
+		}
+
+		// Menu Items
+		> li {
+			position: relative;
+			display: block;
+			float: left;
+
+			> a {
+				display: block;
+				padding: 0 $topbar-anchor-padding-horizontal;
+				font-family: $topbar-anchor-font-family;
+				font-size: $topbar-anchor-font-size;
+				font-weight: $topbar-anchor-font-weight;
+				line-height: $topbar-height;
+				color: $topbar-anchor-font-color;
+				text-decoration: none;
+
+				// CSS Transitions
+				// Transitions
+				-webkit-transition: color $topbar-effect-speed ease-in, border-top-color $topbar-effect-speed ease-in;
+				-ms-transition: color $topbar-effect-speed ease-in, border-top-color $topbar-effect-speed ease-in;
+				-moz-transition: color $topbar-effect-speed ease-in, border-top-color $topbar-effect-speed ease-in;
+				-o-transition: color $topbar-effect-speed ease-in, border-top-color $topbar-effect-speed ease-in;
+				transition: color $topbar-effect-speed ease-in, border-top-color $topbar-effect-speed ease-in;
+			}
+
+			&:hover {
+				a {
+					color: $topbar-anchor-hover-font-color;
+					border-top-color: $topbar-anchor-hover-font-color;
+					background-color: $topbar-anchor-hover-bg-color;
+				}
+			}
+
+			&.has-dropdown {
+				>a {
+					padding-right: ($topbar-dropdown-caret-size * 7); // Space for down arrow
+
+					&::after {
+						// Down arrow the css-tricks way
+						position: absolute;
+						right: ($topbar-dropdown-caret-size * 2) + 5;
+						top: (($topbar-height / 2) - $topbar-dropdown-caret-size + ($topbar-dropdown-caret-size / 2));
+						display: block;
+						content: ""; 
+						height: 0;
+						width: 0;
+						border: $topbar-dropdown-caret-size solid transparent;
+						border-top-color: inherit;
+					}
+				}
+
+				>ul {
+					position: absolute;
+					display: block; 
+					top: $topbar-height;
+					left: -9999px;
+					opacity: 0;
+					background: $topbar-bg-color;
+					cursor: pointer;
+					-webkit-transition: opacity $topbar-effect-speed ease-in;
+					-ms-transition: opacity $topbar-effect-speed ease-in;
+					-moz-transition: opacity $topbar-effect-speed ease-in;
+					-o-transition: opacity $topbar-effect-speed ease-in;
+					transition: opacity $topbar-effect-speed ease-in;
+
+					li {
+						display: block;
+						position: absolute;
+						height: 0;
+						-webkit-transition: height ($topbar-effect-speed/2) ease-in;
+						-ms-transition: height ($topbar-effect-speed/2) ease-in;
+						-moz-transition: height ($topbar-effect-speed/2) ease-in;
+						-o-transition: height ($topbar-effect-speed/2) ease-in;
+						transition: height ($topbar-effect-speed/2) ease-in;
+					}
+				}
+
+				&:hover > ul {
+					left: 0;
+					opacity: 1;
+					background: $topbar-bg-color;
+
+					li {
+						position: relative;
+						height: auto;
+
+						a {
+							/* Layout */
+							display: block;
+							padding: $topbar-dropdown-anchor-padding-vertical $topbar-dropdown-anchor-padding-horizontal;
+							width: 180px;
+
+							/* Typography */
+							font-family: $topbar-anchor-font-family;
+							font-size: $topbar-dropdown-anchor-font-size;
+							line-height: 1.2;
+							text-decoration: none;
+							color: $topbar-anchor-font-color;
+							font-weight: $topbar-anchor-font-weight;
+							
+							/* Background & effects */
+							-webkit-transition: color $topbar-effect-speed ease-in, border-left-color $topbar-effect-speed ease-in;;
+							-ms-transition: color $topbar-effect-speed ease-in, border-left-color $topbar-effect-speed ease-in;;
+							-moz-transition: color $topbar-effect-speed ease-in, border-left-color $topbar-effect-speed ease-in;;
+							-o-transition: color $topbar-effect-speed ease-in, border-left-color $topbar-effect-speed ease-in;;
+							transition: color $topbar-effect-speed ease-in, border-left-color $topbar-effect-speed ease-in;;
+						}
+					}
+				}
+			}
+		}
+
+	}
+
+}

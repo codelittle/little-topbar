@@ -1,0 +1,118 @@
+nav.little-topbar, nav.little-topbar * {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  list-style: none; }
+
+nav.little-topbar {
+  width: 100%; }
+  nav.little-topbar div.logo {
+    float: left;
+    height: 50px;
+    width: 260px; }
+    nav.little-topbar div.logo h1 a, nav.little-topbar div.logo h1 a:visited {
+      height: 50px;
+      line-height: 50px;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 0;
+      background-image: url(../img/little_topbar_logo_1x.png);
+      background-position: left center;
+      background-repeat: no-repeat;
+      background-size: 220px 50px;
+      text-indent: 120%;
+      display: block;
+      overflow: hidden; }
+  nav.little-topbar ul {
+    position: relative;
+    display: block;
+    float: left;
+    height: 50px;
+    width: auto;
+    background: #fff; }
+    nav.little-topbar ul > li.expand, nav.little-topbar ul > li.collapse {
+      display: none; }
+    nav.little-topbar ul > li {
+      position: relative;
+      display: block;
+      float: left; }
+      nav.little-topbar ul > li > a {
+        display: block;
+        padding: 0 20px;
+        font-family: sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 50px;
+        color: #333;
+        text-decoration: none;
+        -webkit-transition: color 300ms ease-in, border-top-color 300ms ease-in;
+        -ms-transition: color 300ms ease-in, border-top-color 300ms ease-in;
+        -moz-transition: color 300ms ease-in, border-top-color 300ms ease-in;
+        -o-transition: color 300ms ease-in, border-top-color 300ms ease-in;
+        transition: color 300ms ease-in, border-top-color 300ms ease-in; }
+      nav.little-topbar ul > li:hover a {
+        color: #000;
+        border-top-color: #000;
+        background-color: #f2f2f2; }
+      nav.little-topbar ul > li.has-dropdown > a {
+        padding-right: 35px; }
+        nav.little-topbar ul > li.has-dropdown > a::after {
+          position: absolute;
+          right: 15px;
+          top: 22.5px;
+          display: block;
+          content: "";
+          height: 0;
+          width: 0;
+          border: 5px solid transparent;
+          border-top-color: inherit; }
+      nav.little-topbar ul > li.has-dropdown > ul {
+        position: absolute;
+        display: block;
+        top: 50px;
+        left: -9999px;
+        opacity: 0;
+        background: #fff;
+        cursor: pointer;
+        -webkit-transition: opacity 300ms ease-in;
+        -ms-transition: opacity 300ms ease-in;
+        -moz-transition: opacity 300ms ease-in;
+        -o-transition: opacity 300ms ease-in;
+        transition: opacity 300ms ease-in; }
+        nav.little-topbar ul > li.has-dropdown > ul li {
+          display: block;
+          position: absolute;
+          height: 0;
+          -webkit-transition: height 150ms ease-in;
+          -ms-transition: height 150ms ease-in;
+          -moz-transition: height 150ms ease-in;
+          -o-transition: height 150ms ease-in;
+          transition: height 150ms ease-in; }
+      nav.little-topbar ul > li.has-dropdown:hover > ul {
+        left: 0;
+        opacity: 1;
+        background: #fff; }
+        nav.little-topbar ul > li.has-dropdown:hover > ul li {
+          position: relative;
+          height: auto; }
+          nav.little-topbar ul > li.has-dropdown:hover > ul li a {
+            /* Layout */
+            display: block;
+            padding: 10px 20px;
+            width: 180px;
+            /* Typography */
+            font-family: sans-serif;
+            font-size: 14px;
+            line-height: 1.2;
+            text-decoration: none;
+            color: #333;
+            font-weight: normal;
+            /* Background & effects */
+            -webkit-transition: color 300ms ease-in, border-left-color 300ms ease-in;
+            -ms-transition: color 300ms ease-in, border-left-color 300ms ease-in;
+            -moz-transition: color 300ms ease-in, border-left-color 300ms ease-in;
+            -o-transition: color 300ms ease-in, border-left-color 300ms ease-in;
+            transition: color 300ms ease-in, border-left-color 300ms ease-in; }
