@@ -1,17 +1,20 @@
 // Little Topbar
 // A tiny responsive navigation library
 
-// Configuration Variables
+// Topbar settings
 $topbar-height: 50px;
 $topbar-width: 100%;
+$topbar-inner-width: 1020px;
+$topbar-padding: 10px;
 $topbar-bg-color: #fff;
 $topbar-bg: $topbar-bg-color;
-$topbar-effect-speed: 300ms;
+$topbar-border: none;
+$topbar-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2);
 
 // Topbar logo settings
 $topbar-logo-height: 50px;
 $topbar-logo-width: 220px;
-$topbar-logo-padding-right: 40px;
+$topbar-logo-padding-right: 20px;
 $topbar-logo-image-standard: url(../img/little_topbar_logo_1x.png);
 
 // Topbar anchors settings
@@ -19,13 +22,30 @@ $topbar-anchor-font-family: sans-serif;
 $topbar-anchor-font-size: 14px;
 $topbar-anchor-font-weight: normal;
 $topbar-anchor-font-color: #333;
-$topbar-anchor-hover-font-color: #000;
+$topbar-anchor-hover-font-color: #f26522;
 $topbar-anchor-hover-bg-color: darken($topbar-bg-color, 5%);
-$topbar-anchor-padding-horizontal: 20px;
+$topbar-anchor-padding-horizontal: 15px;
 $topbar-dropdown-caret-size: 5px; // 4px - 10px, don't go crazy here
 $topbar-dropdown-anchor-font-size: $topbar-anchor-font-size;
 $topbar-dropdown-anchor-padding-horizontal: 20px;
-$topbar-dropdown-anchor-padding-vertical: 10px;
+$topbar-dropdown-anchor-padding-vertical: 15px;
+
+// Animation Settings
+$topbar-effect-speed: 300ms;
+
+// Clearfix
+.clearfix {
+    zoom:1;
+    &:before, &:after {
+        content: "\0020";
+        display: block;
+        height: 0;
+        overflow: hidden;
+    }
+    &:after {
+        clear: both;
+    }
+}
 
 // Reset
 nav.little-topbar,
@@ -41,6 +61,21 @@ nav.little-topbar * {
 
 nav.little-topbar {
 	width: $topbar-width;
+	border-bottom: $topbar-border;
+	@extend .clearfix;
+	padding-left: $topbar-padding;
+	padding-right: $topbar-padding;
+	background: $topbar-bg;
+
+	// topbar shadow
+	-webkit-box-shadow: $topbar-shadow;
+	-moz-box-shadow:    $topbar-shadow;
+	box-shadow:         $topbar-shadow;
+
+	.little-topbar-container {
+		max-width: $topbar-inner-width;
+		margin: 0 auto;
+	}
 
 	div.logo {
 		float: left;
@@ -76,6 +111,7 @@ nav.little-topbar {
 		height: $topbar-height;
 		width: auto;
 		background: $topbar-bg;
+		@extend .clearfix;
 
 		// Show / Hide Elements
 		> li.expand,
@@ -140,8 +176,14 @@ nav.little-topbar {
 					top: $topbar-height;
 					left: -9999px;
 					opacity: 0;
-					background: $topbar-bg-color;
 					cursor: pointer;
+					background: $topbar-bg-color;
+
+					// subpage shadow
+					-webkit-box-shadow: $topbar-shadow;
+					-moz-box-shadow:    $topbar-shadow;
+					box-shadow:         $topbar-shadow;
+					
 					-webkit-transition: opacity $topbar-effect-speed ease-in;
 					-ms-transition: opacity $topbar-effect-speed ease-in;
 					-moz-transition: opacity $topbar-effect-speed ease-in;
@@ -152,6 +194,7 @@ nav.little-topbar {
 						display: block;
 						position: absolute;
 						height: 0;
+
 						-webkit-transition: height ($topbar-effect-speed/2) ease-in;
 						-ms-transition: height ($topbar-effect-speed/2) ease-in;
 						-moz-transition: height ($topbar-effect-speed/2) ease-in;
@@ -163,11 +206,12 @@ nav.little-topbar {
 				&:hover > ul {
 					left: 0;
 					opacity: 1;
-					background: $topbar-bg-color;
+					border: $topbar-border;
+					height: auto;
 
-					li {
+					> li {
 						position: relative;
-						height: auto;
+						height: auto; 
 
 						a {
 							/* Layout */
@@ -184,11 +228,19 @@ nav.little-topbar {
 							font-weight: $topbar-anchor-font-weight;
 							
 							/* Background & effects */
-							-webkit-transition: color $topbar-effect-speed ease-in, border-left-color $topbar-effect-speed ease-in;;
-							-ms-transition: color $topbar-effect-speed ease-in, border-left-color $topbar-effect-speed ease-in;;
-							-moz-transition: color $topbar-effect-speed ease-in, border-left-color $topbar-effect-speed ease-in;;
-							-o-transition: color $topbar-effect-speed ease-in, border-left-color $topbar-effect-speed ease-in;;
-							transition: color $topbar-effect-speed ease-in, border-left-color $topbar-effect-speed ease-in;;
+							background-color: $topbar-bg-color;
+
+							-webkit-transition: color $topbar-effect-speed ease-in, border-left-color $topbar-effect-speed ease-in;
+							-ms-transition: color $topbar-effect-speed ease-in, border-left-color $topbar-effect-speed ease-in;
+							-moz-transition: color $topbar-effect-speed ease-in, border-left-color $topbar-effect-speed ease-in;
+							-o-transition: color $topbar-effect-speed ease-in, border-left-color $topbar-effect-speed ease-in;
+							transition: color $topbar-effect-speed ease-in, border-left-color $topbar-effect-speed ease-in;
+
+							&:hover,
+							&:active {
+								color: $topbar-anchor-hover-font-color;
+								background-color: $topbar-anchor-hover-bg-color;
+							}
 						}
 					}
 				}

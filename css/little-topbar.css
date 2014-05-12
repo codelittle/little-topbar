@@ -1,3 +1,13 @@
+.clearfix, nav.little-topbar, nav.little-topbar ul {
+  zoom: 1; }
+  .clearfix:before, nav.little-topbar:before, nav.little-topbar ul:before, .clearfix:after, nav.little-topbar:after, nav.little-topbar ul:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden; }
+  .clearfix:after, nav.little-topbar:after, nav.little-topbar ul:after {
+    clear: both; }
+
 nav.little-topbar, nav.little-topbar * {
   margin: 0;
   padding: 0;
@@ -8,11 +18,21 @@ nav.little-topbar, nav.little-topbar * {
   list-style: none; }
 
 nav.little-topbar {
-  width: 100%; }
+  width: 100%;
+  border-bottom: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  background: #fff;
+  -webkit-box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2); }
+  nav.little-topbar .little-topbar-container {
+    max-width: 1020px;
+    margin: 0 auto; }
   nav.little-topbar div.logo {
     float: left;
     height: 50px;
-    width: 260px; }
+    width: 240px; }
     nav.little-topbar div.logo h1 a, nav.little-topbar div.logo h1 a:visited {
       height: 50px;
       line-height: 50px;
@@ -41,7 +61,7 @@ nav.little-topbar {
       float: left; }
       nav.little-topbar ul > li > a {
         display: block;
-        padding: 0 20px;
+        padding: 0 15px;
         font-family: sans-serif;
         font-size: 14px;
         font-weight: normal;
@@ -54,8 +74,8 @@ nav.little-topbar {
         -o-transition: color 300ms ease-in, border-top-color 300ms ease-in;
         transition: color 300ms ease-in, border-top-color 300ms ease-in; }
       nav.little-topbar ul > li:hover a {
-        color: #000;
-        border-top-color: #000;
+        color: #f26522;
+        border-top-color: #f26522;
         background-color: #f2f2f2; }
       nav.little-topbar ul > li.has-dropdown > a {
         padding-right: 35px; }
@@ -75,8 +95,11 @@ nav.little-topbar {
         top: 50px;
         left: -9999px;
         opacity: 0;
-        background: #fff;
         cursor: pointer;
+        background: #fff;
+        -webkit-box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2);
+        -moz-box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2);
         -webkit-transition: opacity 300ms ease-in;
         -ms-transition: opacity 300ms ease-in;
         -moz-transition: opacity 300ms ease-in;
@@ -94,14 +117,15 @@ nav.little-topbar {
       nav.little-topbar ul > li.has-dropdown:hover > ul {
         left: 0;
         opacity: 1;
-        background: #fff; }
-        nav.little-topbar ul > li.has-dropdown:hover > ul li {
+        border: none;
+        height: auto; }
+        nav.little-topbar ul > li.has-dropdown:hover > ul > li {
           position: relative;
           height: auto; }
-          nav.little-topbar ul > li.has-dropdown:hover > ul li a {
+          nav.little-topbar ul > li.has-dropdown:hover > ul > li a {
             /* Layout */
             display: block;
-            padding: 10px 20px;
+            padding: 15px 20px;
             width: 180px;
             /* Typography */
             font-family: sans-serif;
@@ -111,8 +135,12 @@ nav.little-topbar {
             color: #333;
             font-weight: normal;
             /* Background & effects */
+            background-color: #fff;
             -webkit-transition: color 300ms ease-in, border-left-color 300ms ease-in;
             -ms-transition: color 300ms ease-in, border-left-color 300ms ease-in;
             -moz-transition: color 300ms ease-in, border-left-color 300ms ease-in;
             -o-transition: color 300ms ease-in, border-left-color 300ms ease-in;
             transition: color 300ms ease-in, border-left-color 300ms ease-in; }
+            nav.little-topbar ul > li.has-dropdown:hover > ul > li a:hover, nav.little-topbar ul > li.has-dropdown:hover > ul > li a:active {
+              color: #f26522;
+              background-color: #f2f2f2; }
