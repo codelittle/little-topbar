@@ -19,7 +19,9 @@ nav.little-topbar, nav.little-topbar * {
 
 nav.little-topbar {
   width: 100%;
-  border-bottom: none;
+  border-bottom-color: none;
+  border-bottom-width: 0px;
+  border-bottom-style: solid;
   padding-left: 10px;
   padding-right: 10px;
   background: #fff;
@@ -31,11 +33,11 @@ nav.little-topbar {
     margin: 0 auto; }
   nav.little-topbar div.logo {
     float: left;
-    height: 50px;
+    height: 60px;
     width: 240px; }
     nav.little-topbar div.logo h1 a, nav.little-topbar div.logo h1 a:visited {
-      height: 50px;
-      line-height: 50px;
+      height: 60px;
+      line-height: 60px;
       text-decoration: none;
       font-weight: bold;
       padding: 0;
@@ -49,8 +51,8 @@ nav.little-topbar {
   nav.little-topbar ul {
     position: relative;
     display: block;
-    float: left;
-    height: 50px;
+    float: right;
+    height: 60px;
     width: auto;
     background: #fff; }
     nav.little-topbar ul > li.expand, nav.little-topbar ul > li.collapse {
@@ -65,9 +67,16 @@ nav.little-topbar {
         font-family: sans-serif;
         font-size: 14px;
         font-weight: normal;
-        line-height: 50px;
+        line-height: 60px;
         color: #333;
         text-decoration: none;
+        border-left-width: 1px;
+        border-right-width: 1px;
+        border-left-style: solid;
+        border-right-style: solid;
+        border-left-color: #eee;
+        border-right-color: #eee;
+        margin-right: -1px;
         -webkit-transition: color 300ms ease-in, border-top-color 300ms ease-in;
         -ms-transition: color 300ms ease-in, border-top-color 300ms ease-in;
         -moz-transition: color 300ms ease-in, border-top-color 300ms ease-in;
@@ -82,7 +91,7 @@ nav.little-topbar {
         nav.little-topbar ul > li.has-dropdown > a::after {
           position: absolute;
           right: 15px;
-          top: 22.5px;
+          top: 27.5px;
           display: block;
           content: "";
           height: 0;
@@ -92,7 +101,8 @@ nav.little-topbar {
       nav.little-topbar ul > li.has-dropdown > ul {
         position: absolute;
         display: block;
-        top: 50px;
+        float: left;
+        top: 60px;
         left: -9999px;
         opacity: 0;
         cursor: pointer;
@@ -117,7 +127,7 @@ nav.little-topbar {
       nav.little-topbar ul > li.has-dropdown:hover > ul {
         left: 0;
         opacity: 1;
-        border: none;
+        border: 1px solid none;
         height: auto; }
         nav.little-topbar ul > li.has-dropdown:hover > ul > li {
           position: relative;
@@ -136,6 +146,9 @@ nav.little-topbar {
             font-weight: normal;
             /* Background & effects */
             background-color: #fff;
+            border-top-width: 1px;
+            border-top-style: solid;
+            border-top-color: #eee;
             -webkit-transition: color 300ms ease-in, border-left-color 300ms ease-in;
             -ms-transition: color 300ms ease-in, border-left-color 300ms ease-in;
             -moz-transition: color 300ms ease-in, border-left-color 300ms ease-in;
@@ -144,3 +157,9 @@ nav.little-topbar {
             nav.little-topbar ul > li.has-dropdown:hover > ul > li a:hover, nav.little-topbar ul > li.has-dropdown:hover > ul > li a:active {
               color: #f26522;
               background-color: #f2f2f2; }
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+  nav.little-topbar div.logo h1 a, nav.little-topbar div.logo h1 a:visited {
+    background-image: url(../img/little_topbar_logo_2x.png); } }
+
+@media screen and (max-width: 768px) { }

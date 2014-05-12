@@ -2,20 +2,29 @@
 // A tiny responsive navigation library
 
 // Topbar settings
-$topbar-height: 50px;
+$topbar-height: 60px;
 $topbar-width: 100%;
 $topbar-inner-width: 1020px;
 $topbar-padding: 10px;
+$topbar-links-float: right;
 $topbar-bg-color: #fff;
 $topbar-bg: $topbar-bg-color;
-$topbar-border: none;
 $topbar-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2);
+
+// Border Variables
+$topbar-outter-border-width: 0px;
+$topbar-outter-border-color: none;
+$topbar-inner-border-width: 1px;
+$topbar-inner-border-color: #eee;
+$topbar-submenu-inner-border-width: $topbar-inner-border-width;
+$topbar-submenu-inner-border-color: $topbar-inner-border-color;
 
 // Topbar logo settings
 $topbar-logo-height: 50px;
 $topbar-logo-width: 220px;
 $topbar-logo-padding-right: 20px;
 $topbar-logo-image-standard: url(../img/little_topbar_logo_1x.png);
+$topbar-logo-image-retina:   url(../img/little_topbar_logo_2x.png);
 
 // Topbar anchors settings
 $topbar-anchor-font-family: sans-serif;
@@ -33,18 +42,21 @@ $topbar-dropdown-anchor-padding-vertical: 15px;
 // Animation Settings
 $topbar-effect-speed: 300ms;
 
+// Responsive Settings
+$responsive_breakpoint: 768px;
+
 // Clearfix
 .clearfix {
-    zoom:1;
-    &:before, &:after {
-        content: "\0020";
-        display: block;
-        height: 0;
-        overflow: hidden;
-    }
-    &:after {
-        clear: both;
-    }
+	zoom:1;
+	&:before, &:after {
+		content: "\0020";
+		display: block;
+		height: 0;
+		overflow: hidden;
+	}
+	&:after {
+		clear: both;
+	}
 }
 
 // Reset
@@ -61,7 +73,9 @@ nav.little-topbar * {
 
 nav.little-topbar {
 	width: $topbar-width;
-	border-bottom: $topbar-border;
+	border-bottom-color: $topbar-outter-border-color;
+	border-bottom-width: $topbar-outter-border-width;
+	border-bottom-style: solid;
 	@extend .clearfix;
 	padding-left: $topbar-padding;
 	padding-right: $topbar-padding;
@@ -107,7 +121,7 @@ nav.little-topbar {
 	ul {
 		position: relative;
 		display: block;
-		float: left;
+		float: $topbar-links-float;
 		height: $topbar-height;
 		width: auto;
 		background: $topbar-bg;
@@ -134,6 +148,16 @@ nav.little-topbar {
 				line-height: $topbar-height;
 				color: $topbar-anchor-font-color;
 				text-decoration: none;
+				
+				// Dividers between 
+				border-left-width: $topbar-inner-border-width;
+				border-right-width: $topbar-inner-border-width;
+				border-left-style: solid;
+				border-right-style: solid;
+				border-left-color: $topbar-inner-border-color;
+				border-right-color: $topbar-inner-border-color;
+				margin-right: -$topbar-inner-border-width;
+
 
 				// CSS Transitions
 				// Transitions
@@ -172,7 +196,8 @@ nav.little-topbar {
 
 				>ul {
 					position: absolute;
-					display: block; 
+					display: block;
+					float: left;
 					top: $topbar-height;
 					left: -9999px;
 					opacity: 0;
@@ -200,13 +225,14 @@ nav.little-topbar {
 						-moz-transition: height ($topbar-effect-speed/2) ease-in;
 						-o-transition: height ($topbar-effect-speed/2) ease-in;
 						transition: height ($topbar-effect-speed/2) ease-in;
+
 					}
 				}
 
 				&:hover > ul {
 					left: 0;
 					opacity: 1;
-					border: $topbar-border;
+					border: 1px solid $topbar-outter-border-color;
 					height: auto;
 
 					> li {
@@ -230,6 +256,11 @@ nav.little-topbar {
 							/* Background & effects */
 							background-color: $topbar-bg-color;
 
+							// Vertical dividers
+							border-top-width: $topbar-inner-border-width;
+							border-top-style: solid;
+							border-top-color: $topbar-inner-border-color;
+
 							-webkit-transition: color $topbar-effect-speed ease-in, border-left-color $topbar-effect-speed ease-in;
 							-ms-transition: color $topbar-effect-speed ease-in, border-left-color $topbar-effect-speed ease-in;
 							-moz-transition: color $topbar-effect-speed ease-in, border-left-color $topbar-effect-speed ease-in;
@@ -250,3 +281,26 @@ nav.little-topbar {
 	}
 
 }
+
+// Retina display media query
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) { 
+  
+ 	// Retina display logo
+	nav.little-topbar div.logo h1 a,
+	nav.little-topbar div.logo h1 a:visited {
+		background-image: $topbar-logo-image-retina;
+	}
+
+}
+
+@media screen and (max-width: $responsive_breakpoint) {
+	
+}
+
+
