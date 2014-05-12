@@ -1,0 +1,31 @@
+{
+  "name": "little-topbar",
+  "version": "0.0.1",
+  "description": "A tiny responsive navigation library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/codelittle/little-topbar"
+  },
+  "keywords": [
+    "responsive",
+    "navigation"
+  ],
+  "author": "Igor Putina",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/codelittle/little-topbar/issues"
+  },
+  "homepage": "https://github.com/codelittle/little-topbar",
+  "devDependencies": {
+    "coffee-script": "^1.7.1",
+    "grunt": "^0.4.4",
+    "grunt-contrib-coffee": "^0.10.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-sass": "^0.12.1",
+    "node-sass": "^0.8.6"
+  }
+}

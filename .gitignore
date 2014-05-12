@@ -1,0 +1,24 @@
+*.DS_Store
+
+# Ignore IDE project settings
+.idea/
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+*.log
+/tmp
+
+# OS X files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Node Modules
+node_modules
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes

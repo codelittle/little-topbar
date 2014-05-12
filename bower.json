@@ -1,0 +1,27 @@
+{
+  "name": "little-topbar",
+  "version": "0.0.1",
+  "authors": [
+    "Igor Putina <igor@wearepropeople.com>"
+  ],
+  "description": "A tiny responsive navigation library",
+  "main": "index.html",
+  "keywords": [
+    "navigation",
+    "responsive"
+  ],
+  "license": "MIT",
+  "homepage": "http://github.com/codelittle/little-topbar",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "2.1.1",
+    "modernizr": "2.8.1"
+  }
+}
