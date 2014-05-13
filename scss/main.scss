@@ -30,20 +30,26 @@ $topbar-logo-image-retina:   url(../img/little_topbar_logo_2x.png);
 $topbar-anchor-font-family: sans-serif;
 $topbar-anchor-font-size: 14px;
 $topbar-anchor-font-weight: normal;
-$topbar-anchor-font-color: #333;
-$topbar-anchor-hover-font-color: #f26522;
-$topbar-anchor-hover-bg-color: darken($topbar-bg-color, 5%);
 $topbar-anchor-padding-horizontal: 15px;
 $topbar-dropdown-caret-size: 5px; // 4px - 10px, don't go crazy here
 $topbar-dropdown-anchor-font-size: $topbar-anchor-font-size;
 $topbar-dropdown-anchor-padding-horizontal: 20px;
 $topbar-dropdown-anchor-padding-vertical: 15px;
 
+// Topbar anchor colors
+$topbar-anchor-font-color: #333;
+$topbar-anchor-hover-font-color: #f26522;
+$topbar-anchor-hover-bg-color: darken($topbar-bg-color, 5%);
+$topbar-anchor-active-font-color: #f26522;
+$topbar-anchor-active-bg-color: darken($topbar-bg-color, 8%);
+$topbar-anchor-active-hover-font-color: lighten(#f26522, 5%);
+$topbar-anchor-active-hover-bg-color: darken($topbar-bg-color, 12%);
+
 // Animation Settings
 $topbar-effect-speed: 300ms;
 
 // Responsive Settings
-$responsive_breakpoint: 768px;
+$responsive_breakpoint: 840px;
 
 // Clearfix
 .clearfix {
@@ -276,6 +282,20 @@ nav.little-topbar {
 					}
 				}
 			}
+
+			&.active {
+				// Current menu
+				> a {
+					color: $topbar-anchor-active-font-color;
+					background-color: $topbar-anchor-active-bg-color;
+				}
+
+				> a:hover,
+				> a:active {
+					color: $topbar-anchor-active-hover-font-color;
+					background-color: $topbar-anchor-active-hover-bg-color;
+				}
+			}
 		}
 
 	}
@@ -300,7 +320,10 @@ only screen and (                min-resolution: 2dppx) {
 }
 
 @media screen and (max-width: $responsive_breakpoint) {
-	
+	nav.little-topbar {
+		max-width:  $responsive_breakpoint;
+		
+	}
 }
 
 

@@ -157,9 +157,17 @@ nav.little-topbar {
             nav.little-topbar ul > li.has-dropdown:hover > ul > li a:hover, nav.little-topbar ul > li.has-dropdown:hover > ul > li a:active {
               color: #f26522;
               background-color: #f2f2f2; }
+      nav.little-topbar ul > li.active > a {
+        color: #f26522;
+        background-color: #ebebeb; }
+      nav.little-topbar ul > li.active > a:hover, nav.little-topbar ul > li.active > a:active {
+        color: #f3753a;
+        background-color: #e0e0e0; }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
   nav.little-topbar div.logo h1 a, nav.little-topbar div.logo h1 a:visited {
     background-image: url(../img/little_topbar_logo_2x.png); } }
 
-@media screen and (max-width: 768px) { }
+@media screen and (max-width: 840px) {
+  nav.little-topbar {
+    max-width: 840px; } }
