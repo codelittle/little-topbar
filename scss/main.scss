@@ -6,7 +6,7 @@ $topbar-height: 60px;
 $topbar-width: 100%;
 $topbar-inner-width: 1020px;
 $topbar-padding: 10px;
-$topbar-links-float: right;
+$topbar-menu-float: right;
 $topbar-bg-color: #fff;
 $topbar-bg: $topbar-bg-color;
 $topbar-shadow: 0px 2px 1px 0px rgba(0, 0, 0, 0.2);
@@ -45,11 +45,20 @@ $topbar-anchor-active-bg-color: darken($topbar-bg-color, 8%);
 $topbar-anchor-active-hover-font-color: lighten(#f26522, 5%);
 $topbar-anchor-active-hover-bg-color: darken($topbar-bg-color, 12%);
 
+// Toggle settings
+$little-toggle-color: #333;
+$little-toggle-color-active: #fff;
+$little-toggle-dark-screen-color: rgba(#000, .8);
+$little-toggle-text-size: 12px;
+$little-toggle-icon-size: 18px;
+$little-toggle-icon-spacing: 10px;
+
 // Animation Settings
 $topbar-effect-speed: 300ms;
 
 // Responsive Settings
 $responsive_breakpoint: 840px;
+$topbar-mobile-width: 280px;
 
 // Import Icons
 @import 'icons';
@@ -131,7 +140,7 @@ nav.little-topbar {
 	ul {
 		position: relative;
 		display: block;
-		float: $topbar-links-float;
+		float: $topbar-menu-float;
 		height: $topbar-height;
 		width: auto;
 		background: $topbar-bg;
@@ -307,6 +316,25 @@ nav.little-topbar {
 
 }
 
+// Modernizr hover resets
+html.touch {
+
+	nav.little-topbar {
+		
+		ul > li > a:hover {
+			color: $topbar-anchor-font-color;
+			background-color: $topbar-bg-color;
+		}
+
+		ul > li.active > a:hover {
+			color: $topbar-anchor-active-font-color;
+			background-color: $topbar-anchor-active-bg-color;
+		}
+		
+	}
+
+}
+
 // Retina display media query
 @media
 only screen and (-webkit-min-device-pixel-ratio: 2),
@@ -315,26 +343,29 @@ only screen and (     -o-min-device-pixel-ratio: 2/1),
 only screen and (        min-device-pixel-ratio: 2),
 only screen and (                min-resolution: 192dpi),
 only screen and (                min-resolution: 2dppx) { 
-  
+
  	// Retina display logo
-	nav.little-topbar div.logo h1 a,
-	nav.little-topbar div.logo h1 a:visited {
-		background-image: $topbar-logo-image-retina;
-	}
+ 	nav.little-topbar div.logo h1 a,
+ 	nav.little-topbar div.logo h1 a:visited {
+ 		background-image: $topbar-logo-image-retina;
+ 	}
 
-}
+ }
 
-$little-toggle-color: #333;
-$little-toggle-text-size: 12px;
-$little-toggle-icon-size: 18px;
-$little-toggle-icon-spacing: 10px;
+ @media screen and (max-width: $responsive_breakpoint) {
+ 	nav.little-topbar {
+ 		max-width:  $responsive_breakpoint;
 
-@media screen and (max-width: $responsive_breakpoint) {
-	nav.little-topbar {
-		max-width:  $responsive_breakpoint;
-		
-	 	ul {
-			display: none;
+ 		ul {
+ 			display: none;
+ 			opacity: 0;
+
+			// Fadein
+			-webkit-transition: opacity $topbar-effect-speed ease-in;
+			-ms-transition: opacity $topbar-effect-speed ease-in;
+			-moz-transition: opacity $topbar-effect-speed ease-in;
+			-o-transition: opacity $topbar-effect-speed ease-in;
+			transition: opacity $topbar-effect-speed ease-in;
 		}
 		// Show / Hide Elements
 		div.little-toggle {
@@ -357,11 +388,79 @@ $little-toggle-icon-spacing: 10px;
 					padding: 0 $little-toggle-icon-spacing;
 				}
 			}
+			a.expand {
+				display: block; // expand button displayed by default
+				opacity: 1;
+			}
 
 			a.collapse {
 				display: none; // collapse button hidden by default
+				opacity: 0;
+				color: $little-toggle-color-active;
 			}
 		}
+
+		&.expanded {
+			position: fixed;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			background: $little-toggle-dark-screen-color;
+			overflow: scroll;
+			
+			div.logo {
+				opacity: .35;
+			}
+
+			div.menu-container {
+				position: fixed;
+				top: $topbar-height + 20px;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				width: 100%;
+			}
+
+			ul {
+				display: block;
+				float: none;
+				opacity: 1;
+				background-color: $topbar-bg-color;
+				width: $topbar-mobile-width;
+				height: auto;
+				margin: 0 auto;
+				@extend .clearfix;
+
+				li {
+					display: block;
+					float: none;
+					width: 100%;
+				}
+
+				li:last-child {
+					// Vertical dividers additional
+					border-bottom-width: $topbar-inner-border-width;
+					border-bottom-style: solid;
+					border-bottom-color: $topbar-inner-border-color;
+				}
+			}
+
+			div.little-toggle {
+				a.collapse {
+					display: block;
+					opacity: 1;
+				}
+
+				a.expand {
+					display: none;
+					opacity: 0;
+				}
+			}
+
+		}
+
 	}
 }
 

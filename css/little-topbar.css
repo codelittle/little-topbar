@@ -47,14 +47,14 @@
 .icon-boxed-chevron-down:before {
   content: "\e608"; }
 
-.clearfix, nav.little-topbar, nav.little-topbar ul {
+.clearfix, nav.little-topbar, nav.little-topbar ul, nav.little-topbar.expanded ul {
   zoom: 1; }
-  .clearfix:before, nav.little-topbar:before, nav.little-topbar ul:before, .clearfix:after, nav.little-topbar:after, nav.little-topbar ul:after {
+  .clearfix:before, nav.little-topbar:before, nav.little-topbar ul:before, nav.little-topbar.expanded ul:before, .clearfix:after, nav.little-topbar:after, nav.little-topbar ul:after, nav.little-topbar.expanded ul:after {
     content: "\0020";
     display: block;
     height: 0;
     overflow: hidden; }
-  .clearfix:after, nav.little-topbar:after, nav.little-topbar ul:after {
+  .clearfix:after, nav.little-topbar:after, nav.little-topbar ul:after, nav.little-topbar.expanded ul:after {
     clear: both; }
 
 nav.little-topbar, nav.little-topbar * {
@@ -213,6 +213,13 @@ nav.little-topbar {
   nav.little-topbar .little-toggle a.expand, nav.little-topbar .little-toggle a.collapse {
     display: none; }
 
+html.touch nav.little-topbar ul > li > a:hover {
+  color: #333;
+  background-color: #fff; }
+html.touch nav.little-topbar ul > li.active > a:hover {
+  color: #f26522;
+  background-color: #ebebeb; }
+
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
   nav.little-topbar div.logo h1 a, nav.little-topbar div.logo h1 a:visited {
     background-image: url(../img/little_topbar_logo_2x.png); } }
@@ -221,7 +228,13 @@ nav.little-topbar {
   nav.little-topbar {
     max-width: 840px; }
     nav.little-topbar ul {
-      display: none; }
+      display: none;
+      opacity: 0;
+      -webkit-transition: opacity 300ms ease-in;
+      -ms-transition: opacity 300ms ease-in;
+      -moz-transition: opacity 300ms ease-in;
+      -o-transition: opacity 300ms ease-in;
+      transition: opacity 300ms ease-in; }
     nav.little-topbar div.little-toggle a.expand, nav.little-topbar div.little-toggle a.collapse {
       display: block;
       float: right;
@@ -235,5 +248,50 @@ nav.little-topbar {
         font-family: 'littletopbar';
         font-size: 18px;
         padding: 0 10px; }
+    nav.little-topbar div.little-toggle a.expand {
+      display: block;
+      opacity: 1; }
     nav.little-topbar div.little-toggle a.collapse {
-      display: none; } }
+      display: none;
+      opacity: 0;
+      color: #fff; }
+    nav.little-topbar.expanded {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      overflow: scroll; }
+      nav.little-topbar.expanded div.logo {
+        opacity: 0.35; }
+      nav.little-topbar.expanded div.menu-container {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%; }
+      nav.little-topbar.expanded ul {
+        display: block;
+        float: none;
+        opacity: 1;
+        background-color: #fff;
+        width: 280px;
+        height: auto;
+        margin: 0 auto; }
+        nav.little-topbar.expanded ul li {
+          display: block;
+          float: none;
+          width: 100%; }
+        nav.little-topbar.expanded ul li:last-child {
+          border-bottom-width: 1px;
+          border-bottom-style: solid;
+          border-bottom-color: #eee; }
+      nav.little-topbar.expanded div.little-toggle a.collapse {
+        display: block;
+        opacity: 1; }
+      nav.little-topbar.expanded div.little-toggle a.expand {
+        display: none;
+        opacity: 0; } }

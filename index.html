@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/little-topbar.css">
     <script src="js/modernizr/modernizr.js"></script>
     <script src="js/jquery/dist/jquery.min.js"></script>
+    <script src="js/little-topbar.js"></script>
 </head>
 <body>
     <nav class="little-topbar">
@@ -19,26 +20,32 @@
                 <h1><a href="index.html">Little-toolbar</a></h1>
             </div>
             <div class="little-toggle">
-                <a class="expand text" href="#expand"><span class="little-icon icon-menu-lines-expand"></span></a>
-                <a class="collapse text" href="#collapse"><span class="little-icon icon-menu-lines-collapse"></span></a>
+                <a class="expand text" href="#expand">
+                    <span class="little-icon icon-menu-lines-expand"></span>
+                </a>
+                <a class="collapse text" href="#collapse">
+                    <span class="little-icon icon-menu-lines-collapse"></span>
+                </a>
             </div>
-            <ul class="little-items">
-                <li class="active"><a href="index.html">Home</a></li>
-                <li><a href="section.html">Sales</a></li>
-                <li><a href="section.html">Insurance</a></li>
-                <li><a href="section.html">Maintenance</a></li>
-                <li class="has-dropdown"><a href="section.html">Membership</a>
-                    <ul class="dropdown">
-                        <li>
-                            <a href="section.html">Membership Login</a>
-                            <a href="section.html">Membership Benefits</a>
-                            <a href="section.html">FAQs</a>
-                            <a href="section.html">Contact Support</a>
-                        </li>
-                    </ul>
-                </li>
-                <li><a href="section.html">About Us</a></li>
-            </ul>
+            <div class="menu-container">
+                <ul class="little-items">
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li><a href="section.html">Sales</a></li>
+                    <li><a href="section.html">Insurance</a></li>
+                    <li><a href="section.html">Maintenance</a></li>
+                    <li class="has-dropdown"><a href="#">Membership</a>
+                        <ul class="dropdown">
+                            <li>
+                                <a href="section.html">Membership Login</a>
+                                <a href="section.html">Membership Benefits</a>
+                                <a href="section.html">FAQs</a>
+                                <a href="section.html">Contact Support</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="section.html">About Us</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
