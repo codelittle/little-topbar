@@ -2,4 +2,6 @@
 A tiny responsive navigation library
 
 ## Todo 
-- Integrate sensible semantic HTML5 navigation
++ Write the HTML for navigation
++ Design the non-responsive menu
+- Design the rudimentary responsive menu
