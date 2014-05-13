@@ -51,6 +51,9 @@ $topbar-effect-speed: 300ms;
 // Responsive Settings
 $responsive_breakpoint: 840px;
 
+// Import Icons
+@import 'icons';
+
 // Clearfix
 .clearfix {
 	zoom:1;
@@ -83,6 +86,7 @@ nav.little-topbar {
 	border-bottom-width: $topbar-outter-border-width;
 	border-bottom-style: solid;
 	@extend .clearfix;
+	
 	padding-left: $topbar-padding;
 	padding-right: $topbar-padding;
 	background: $topbar-bg;
@@ -132,12 +136,6 @@ nav.little-topbar {
 		width: auto;
 		background: $topbar-bg;
 		@extend .clearfix;
-
-		// Show / Hide Elements
-		> li.expand,
-		> li.collapse {
-			display: none;
-		}
 
 		// Menu Items
 		> li {
@@ -300,6 +298,13 @@ nav.little-topbar {
 
 	}
 
+	.little-toggle {
+		a.expand,
+		a.collapse {
+			display: none;
+		}
+	}
+
 }
 
 // Retina display media query
@@ -319,15 +324,42 @@ only screen and (                min-resolution: 2dppx) {
 
 }
 
+$little-toggle-color: #333;
+$little-toggle-text-size: 12px;
+$little-toggle-icon-size: 18px;
+$little-toggle-icon-spacing: 10px;
+
 @media screen and (max-width: $responsive_breakpoint) {
 	nav.little-topbar {
 		max-width:  $responsive_breakpoint;
 		
-	 	ul li {
+	 	ul {
 			display: none;
-
-			&.expand { 
+		}
+		// Show / Hide Elements
+		div.little-toggle {
+			a.expand,
+			a.collapse {
 				display: block;
+				float: right;
+				line-height: $topbar-height;
+				text-decoration: none;
+				color: $little-toggle-color;
+
+				// By Default these are text links
+				font-family: $topbar-anchor-font-family;
+				font-size: $little-toggle-text-size;
+				font-weight: bold;
+
+				span.little-icon {
+					font-family: 'littletopbar';
+					font-size: $little-toggle-icon-size;
+					padding: 0 $little-toggle-icon-spacing;
+				}
+			}
+
+			a.collapse {
+				display: none; // collapse button hidden by default
 			}
 		}
 	}
