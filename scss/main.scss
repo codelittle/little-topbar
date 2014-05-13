@@ -323,6 +323,13 @@ only screen and (                min-resolution: 2dppx) {
 	nav.little-topbar {
 		max-width:  $responsive_breakpoint;
 		
+	 	ul li {
+			display: none;
+
+			&.expand { 
+				display: block;
+			}
+		}
 	}
 }
 
